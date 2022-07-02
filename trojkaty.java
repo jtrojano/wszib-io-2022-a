@@ -13,9 +13,10 @@ class Trojkaty {
          if (a == b && b == c) {
              System.out.println("Trójkąt równoboczny"); 
          }
-         if (a == b || b == c || b == a) {
-            System.out.println("Trójkąt równoramienny");
-         }
+         if (a == b || b == c || a == c) {
+             System.out.println("Trójkąt równoramienny");
+   	 }
+         // TODO: tutaj trzeba bedzie dopisac inne przypadki
     }
     /** Wyświetla ekran pomocy */
     public static void pomoc(){
@@ -33,6 +34,11 @@ class Trojkaty {
         float b = Float.valueOf(args[1]);
         float c = Float.valueOf(args[2]);
         
+	if (a < 0 || b < 0 || c < 0) {
+       		System.out.println("Długości boków trójkąta muszą być nieujemne!");
+       		System.exit(2);
+        }
+
         jakiTrojkat(a, b, c);
     }
 }
