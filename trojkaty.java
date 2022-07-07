@@ -18,6 +18,7 @@ class Trojkaty {
     }
 
     public static void jakiTrojkat(float a, float b, float c){
+
         if (a == b && b == c) {
             System.out.println("Trójkąt równoboczny"); 
         }
@@ -27,8 +28,38 @@ class Trojkaty {
         if (czyProstokatny(a, b, c)) {
             System.out.println("Trójkąt prostokątny");
         }
+
          // TODO: tutaj trzeba bedzie dopisac inne przypadki
     }
+
+    /**
+                * @param {float} a - Długość pierwszego boku.
+                * @param {float} b - Długość drugiego boku.
+                * @param {float} c - Długość trzeciego boku.
+
+                 Funkcja do sprawdzenia czy trójkąt o podanych bokach może zostać zbudowany.
+*/
+                public static boolean czyIstniejeTrojkat(float a, float b, float c){
+                    if (a + b <= c) return false;
+                    if (a + c <= b) return false;
+                    if (b + c <= a) return false;
+                    return true;
+                 }
+
+/*
+* Funkcja zwraca ile par odcinków trójkąta ma jednakową długość.
+*/
+                public static int ileJednakowych(float a, float b, float c){
+                    int jednakowe = 0; // tutaj zliczamy ile jest jednakowych bokow
+                    if (a == b) {
+                       jednakowe++;
+                    }
+                    if (b == c) {
+                       jednakowe++;
+                    }
+                    return jednakowe;
+                }
+                
     /** Wyświetla ekran pomocy */
     public static void pomoc(){
         System.out.println("Acme INC. (C) 2022");
@@ -48,6 +79,11 @@ class Trojkaty {
 	if (a < 0 || b < 0 || c < 0) {
        		System.out.println("Długości boków trójkąta muszą być nieujemne!");
        		System.exit(2);
+        }
+
+    if (!czyIstniejeTrojkat(a, b, c)) {
+            System.out.println("Z podanych długości boków nie da się zbudować trójkąta");
+            System.exit(3);
         }
 
         jakiTrojkat(a, b, c);
